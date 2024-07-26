@@ -20,7 +20,6 @@ env:
   PROFILE: 'staging'
   NODE_ENV: 'development'
   PORT: 3000
-  APPLEBOY: ${{ secrets.SERVER_PORT }}
 
 jobs:
   test-and-build-dev:
