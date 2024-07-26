@@ -196,6 +196,7 @@ AutoTest.Net/
 .sass-cache/
 
 # Installshield output folder
+temp_auto_push.bat
 [Ee]xpress/
 
 # DocProject is a documentation generator add-in
@@ -395,3 +396,4 @@ dist
 /.env
 /.env.*.local
 *._local.ts
+branch_structure.json

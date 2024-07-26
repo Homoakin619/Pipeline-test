@@ -1,7 +1,7 @@
 name: CI/CD--Dev
 
 on:
-  pull_request:
+  pull_request_target:
     branches:
       - dev
   push:
@@ -20,16 +20,15 @@ env:
   PROFILE: 'staging'
   NODE_ENV: 'development'
   PORT: 3000
-  APPLEBOY: ${{ secrets.SERVER_PORT }}
 
 jobs:
   test-and-build-dev:
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request'
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -39,11 +38,11 @@ jobs:
       - name: Install dependencies
         run: npm install --include=dev
 
-      - name: Build project
-        run: npm run build
-
       - name: Run tests
         run: npm run test
+
+      - name: Build project
+        run: npm run build
 
       - name: Generate migrations
         run: npm run migration:generate
