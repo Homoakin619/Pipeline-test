@@ -9,7 +9,7 @@ on:
       - dev
 
 jobs:
-  test-and-build-dev:
+  test-and-build-ci:
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
 
